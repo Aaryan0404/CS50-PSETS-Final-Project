@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Nationality</th>
+                <th scope="col">Mother Tongue</th>
+                <th scope="col">Favorite Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry["firstname"] }}</td>
+                <td>{{ entry["secondname"] }}</td>
+                <td>{{ entry["email"] }}</td>
+                <td>{{ entry["nationality"] }}</td>
+                <td>{{ entry["language"] }}</td>
+                <td>{{ entry["color"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

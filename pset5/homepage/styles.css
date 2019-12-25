@@ -1,0 +1,62 @@
+
+#homepage_title {
+    text-align: center;
+    font-family: "Impact";
+    border-style: outset;
+    margin: 30px;
+}
+
+.Sub_Title {
+   text-align: center;
+   font-family: "Impact"; 
+   border-style: inset;
+   margin: 20px;
+}
+
+.body {
+   position: relative;
+   top: 10px;
+   font-family: "Monaco";
+   background-image: url("images.jpeg");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.acts {
+  position: relative;
+  left: 30px;
+  font-size: 20px;
+}
+
+table, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table {
+  width:50%;
+}
+
+td {
+  padding: 15px;
+}
+
+tr, td {
+  height: 25px;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.s {
+  text-transform: uppercase;
+  width:50%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+

@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form name="myform" class="needs-validation" onsubmit="return validateRadio() & validateSelect()">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01" class="font-weight-bold">First name</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="firstname" required>
+                        <div class="valid-feedback">
+                        Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                        Please enter your first name.
+                        </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02" class="font-weight-bold">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" name="secondname" required>
+                        <div class="valid-feedback">
+                        Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                        Please enter your last name.
+                        </div>
+            </div>
+        </div>
+        <div>
+            <div class="col-xs-4">
+                <label for="validationCustomUsername" class="font-weight-bold">Email</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="validationCustomUsername" placeholder="Email" aria-describedby="inputGroupPrepend" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" required>
+                        <div class="invalid-feedback">
+                        Please enter your email.
+                        </div>
+                    </div>
+            </div>
+            <br>
+            <div class="col-xs-4">
+                <label for="validationCustomUsername" class="font-weight-bold">Nationality</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Nationality" aria-describedby="inputGroupPrepend" name="nationality" required>
+                        <div class="invalid-feedback">
+                        Please enter your nationality.
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <br>
+        <label class="font-weight-bold">Mother Tongue</label>
+        <div>
+            <div class="radio">
+                <label><input type="radio" name="language" value="English"> English</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="language" value="Spanish"> Spanish</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="French"> French</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="Arabic"> Arabic</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="Mandarin"> Mandarin</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="Thai"> Thai</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="Malay"> Malay</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="German"> German</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="Danish"> Danish</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="Swedish"> Swedish</label>
+            </div>
+            <div class="radio disabled">
+                <label><input type="radio" name="language" value="Swahili"> Swahili</label>
+            </div>
+        </div>
+        <br>
+        <select class="mdb-select md-form" id="colors" name="colorabc">
+            <option name="color" value="nothing" disabled selected>Choose your favorite color</option>
+            <option name="color" value="Blue">Blue</option>
+            <option name="color" value="Black">Black</option>
+            <option name="color" value="Orange">Orange</option>
+            <option name="color" value="Green">Green</option>
+            <option name="color" value="Red">Red</option>
+            <option name="color" value="Pink">Pink</option>
+            <option name="color" value="Yellow">Yellow</option>
+            <option name="color" value="Brown">Brown</option>
+            <option name="color" value="Grey">Grey</option>
+            <option name="color" value="Violet">Violet</option>
+        </select>
+        <hr>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+    <script>
+
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+    function validateRadio() {
+        var radios = document.getElementsByName("language");
+        var validation = false;
+
+        var i = 0;
+        while (!validation && i < radios.length) {
+            if (radios[i].checked) {
+                document.myform.action = "/register"
+                document.myform.method = "post"
+                validation = true;
+            }
+            i = i + 1;
+        }
+
+        if (!validation) {
+            alert("You must select your mother tongue!");
+        }
+        return validation;
+    }
+
+    function validateSelect() {
+        var validation = false;
+        var select = document.getElementById("colors");
+	    var select_result = select.options[select.selectedIndex].value;
+
+        if (select_result == "nothing") {
+            alert("You must select your favorite color!");
+            return validation;
+        }
+        else {
+            validation = true;
+            document.myform.action = "/register"
+            document.myform.method = "post"
+            return validation;
+        }
+    }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="col">
+        <form action="/compare" enctype="multipart/form-data" method="post">
+
+            <ul style="list-style: none;">
+                <li><input type="file" name="file1" align="left"></input></li>
+                <li><input type="file" name="file2" align="left"></input></li>
+            </ul>
+            <br>
+            <ul style="list-style: none;">
+                <li><input type="radio" name="algorithm" value="line" id="line" onclick="disable()">Compare lines</input></li>
+                <li><input type="radio" name="algorithm" value="sentence" id="sentence" onclick="disable()">Compare sentences</input></li>
+                <li><input type="radio" name="algorithm" value="substring" id="substring" onclick="enable()">Compare substrings</input></li>
+                <li><input type="number" name="length" placeholder="Of length n" id="length" disabled></input></li>
+            </ul>
+            <br>
+            <button type="submit">Compare</button>
+        </form>
+    </div>
+
+    <script>
+        function enable() {
+            document.getElementById("length").disabled = false;
+        }
+
+        function disable() {
+            document.getElementById("length").disabled = true;
+        }
+    </script>
+
+{% endblock %}

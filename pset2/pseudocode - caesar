@@ -1,0 +1,8 @@
+Take caesar-cipher key as integer input
+Check to see if the input is valid
+  If input is valid
+    Take plaintext as string input
+    Add key to each element of the string (create ciphertext)
+    Print output
+  Else input not valid
+    Print error message
